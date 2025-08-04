@@ -1,0 +1,16 @@
+name: trigger Azure Pipeline
+on:
+  push:
+    branches:
+    - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Trigger Azure Pipeline
+      uses: Azure/pipelines@v1
+      with: 
+        azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
+        azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_PIPELINE_NAME }}
+        azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
